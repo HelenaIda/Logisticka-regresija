@@ -1,8 +1,6 @@
-# -- coding: utf-8 --
-#lalala
+
 import numpy as np
 import pandas as pd
-from sklearn import tree
 
 eta=0.2
 
@@ -68,28 +66,3 @@ finalList = Train(x_input, W, targets, N = 5)[-1]
 predictions = Predict(finalList, testVector)
 print(predictions)
 
-def seperate_pred(targets,outputs):
-    #assert len(target)=len(output)
-    true_pos=0
-    false_pos=0
-    false_neg=0
-    for true,pred in zip(targets,outputs):
-        if true==1 and pred==1:
-            true_pos=+1
-        if true==0 and pred==1:
-             false_pos=+1    
-        if true==1 and pred==0:
-             false_neg=+1   
-        return[true_pos,false_neg,false_pos]
-    
-def precision_recall(lista_pred):
-    denominator_p = lista_pred[0] + lista_pred[1]
-    denominator_r = lista_pred[0] + lista_pred[2]
-    precision = lista_pred[0] / denominator_p if denominator_p != 0 else 0.0
-    recall = lista_pred[0] / denominator_r if denominator_r != 0 else 0.0
-    return [precision, recall]
-
-
-listax = seperate_pred(targets, outputs)
-rez=precision_recall(listax)
-print(rez)
